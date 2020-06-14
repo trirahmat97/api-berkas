@@ -8,7 +8,7 @@ const rRekom = require('./routes/rRekom');
 const rUser = require('./routes/rUser');
 
 const app = express();
-const urlDB = 'mongodb://127.0.0.1:27017/apps-polda';
+const urlDB = process.env.MONGODB_URL;
 
 mongoose.connect(urlDB, {
     useNewUrlParser: true,
@@ -44,5 +44,6 @@ app.use("/api/izin", rIzin);
 app.use("/api/rekom", rRekom);
 app.use("/api/user", rUser);
 
-const port = process.env.PORT || "3000";
+const port = process.env.PORT;
+console.log(port);
 app.listen(port);
